@@ -61,6 +61,7 @@ class UsuarioRepository:
             """
             self.cursor.execute(query, (usuario.nombre, usuario.apellido, usuario.direccion, usuario.telefono, usuario.email, usuario.dni.zfill(8)))
             self.connection.commit()
+            return True  # Retornar True si la inserción fue exitosa
         except Error as e:
             print(f"Error al crear el usuario: {e}")
 
@@ -73,6 +74,32 @@ class UsuarioRepository:
             print(f"Error al obtener los usuarios: {e}")
 
     from models.usuario import Usuario
+
+    def get_by_name(self, nombre: str):  # Buscar por nombre
+        try:
+            query = "SELECT * FROM usuarios WHERE nombre = %s"
+            self.cursor.execute(query, (nombre,))
+            results = self.cursor.fetchall()  # Obtener todos los resultados
+            
+            print(f"Resultados obtenidos para {nombre}: {results}")  # 👈 Depuración
+            
+            if results:
+                return [
+                    Usuario(
+                        id_usuario=row[0],
+                        nombre=row[1],
+                        apellido=row[2],
+                        direccion=row[3],
+                        telefono=row[4],
+                        email=row[5],
+                        dni=str(row[6])
+                    ) for row in results
+                ]
+            
+            return None  # Si no se encuentra ningún usuario
+        except Error as e:
+            print(f"Error al obtener el usuario con Nombre {nombre}: {e}")
+            return None
 
     def get_by_id(self, id_usuario: int):       #Buscar por id
         try:
@@ -93,7 +120,6 @@ class UsuarioRepository:
         except Error as e:
             print(f"Error al obtener el usuario con ID {id_usuario}: {e}")
             return None
-
     
     def close(self):
         """Cerrar conexión y cursor"""
