@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import "modern-normalize/modern-normalize.css";
+
+:root {
+  --primary-color: #0468BF;
+  --text-color: #213140;
+  --accent-color: #ffffff;
+  --hover-color: #0477BF;
+}
+
+body {
+  font-family: 'Poppins', Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+a {
+  font-size: 16px;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--hover-color);
+  }
+}
