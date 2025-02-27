@@ -29,19 +29,3 @@ project_folder/
 │
 └── .env  # Configuración de variables de entorno (DB, JWT, etc.)
 
-
-Explicación
-- controllers/: Contienen la lógica principal de cada módulo (cómo se manejan los datos antes de enviarlos al frontend).
-- routes/: Define los endpoints de la API para que el frontend pueda interactuar con el backend.
-- repositories/: Manejan las consultas directas a la base de datos.
-- services/: Procesan la lógica de negocio antes de llamar al repositorio o devolver datos al controlador.
-- models/: Define los modelos Pydantic (para validación de datos) y los modelos ORM (para interactuar con la BD).
-Ejemplo de un flujo
-Supongamos que el frontend quiere obtener información de una empresa.
-El proceso en tu backend sería:
-
-1- empresa_routes.py: Define el endpoint /usuario/{id}.
-2- empresa_controller.py: Recibe la solicitud y la pasa al servicio.
-3- empresa_service.py: Valida la lógica de negocio y llama al repositorio.
-4- empresa_repository.py: Hace la consulta a la BD y devuelve los datos.
-5- empresa_model.py: Estructura los datos de salida para asegurar que sean correctos.

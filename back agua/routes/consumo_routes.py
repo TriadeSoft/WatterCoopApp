@@ -7,17 +7,13 @@ from datetime import date
 router = APIRouter()
 controller = ConsumoController()
 
-class ConsumoCreate(BaseModel):
-    fk_id_conexion: int
-    ultima_lectura: float
-    lectura_actual: float
-    mes: date  # El mes de la lectura
 
 @router.get("/consumos/")
 def get_all_consumos():
     return controller.get_all()
 
 @router.post("/consumos/")
-def create_consumo(consumo: ConsumoCreate):
+def create_consumo(consumo: Consumo):
     consumo_obj = Consumo(**consumo.dict())
     return controller.create(consumo_obj)
+
