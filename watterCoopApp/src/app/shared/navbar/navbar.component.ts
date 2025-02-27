@@ -5,10 +5,11 @@ import { MenuModule } from 'primeng/menu';
 import { Subscription } from 'rxjs';
 import { ResolutionService } from '../../core/services/resolution.service';
 import { CommonModule } from '@angular/common';
+import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule,RouterModule, ButtonModule, MenuModule],
+  imports: [CommonModule,RouterModule, ButtonModule, MenuModule,MobileNavComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
