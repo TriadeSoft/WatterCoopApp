@@ -1,1 +1,81 @@
-<p>services-section works!</p>
+<section class="services-section">
+  <h2>Nuestros Servicios</h2>
+  <p>Brindamos soluciones para garantizar un acceso eficiente y transparente al agua en nuestra comunidad.</p>
+
+  <div class="services-container">
+
+
+<p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+  <ng-template #header>
+      <img alt="Card Image" class="w-full" src="images/servicesImg/facturacion.png"/>
+  </ng-template>
+  <ng-template #title> Facturación y Cobro </ng-template>
+  <ng-template #subtitle> Gestión de Boletas </ng-template>
+  <ng-template #content>
+    <p>Generamos, imprimimos y distribuimos boletas de pago con múltiples opciones de cobro.</p>
+    <div class="service-info">
+        <i class="pi pi-calendar"></i> Facturación mensual
+    </div>
+  </ng-template>
+</p-card>
+
+<p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="Card Image" class="w-full" src="images/servicesImg/medicion.png"/>
+  </ng-template>
+  <ng-template #title> Medición y Control </ng-template>
+  <ng-template #subtitle> Seguimiento del Consumo </ng-template>
+  <ng-template #content>
+    <p>Realizamos lectura y monitoreo de medidores para garantizar un consumo eficiente del agua.</p>
+    <div class="service-info">
+        <i class="pi pi-chart-line"></i> Control periódico
+    </div>
+  </ng-template>
+</p-card>
+
+<p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="Card Image" class="w-full" src="images/servicesImg/reparaciones.png"/>
+  </ng-template>
+  <ng-template #title> Mantenimiento y Reparaciones </ng-template>
+  <ng-template #subtitle> Red de Agua Potable </ng-template>
+  <ng-template #content>
+    <p>Atendemos fugas, realizamos mantenimiento y aseguramos el buen estado de las redes.</p>
+    <div class="service-info">
+        <i class="pi pi-tools"></i> Servicio activo 24/7
+    </div>
+  </ng-template>
+</p-card>
+
+<p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="Card Image" class="w-full" src="images/servicesImg/nuevasconexiones.png"/>
+  </ng-template>
+  <ng-template #title> Nuevas Conexiones </ng-template>
+  <ng-template #subtitle> Expansión del Servicio </ng-template>
+  <ng-template #content>
+    <p>Gestionamos nuevas conexiones domiciliarias y brindamos asesoramiento en trámites.</p>
+    <div class="service-info">
+        <i class="pi pi-home"></i> Crecimiento sostenible
+    </div>
+  </ng-template>
+</p-card>
+
+<p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="Card Image" class="w-full" src="images/servicesImg/comunidad.png"/>
+  </ng-template>
+  <ng-template #title> Transparencia y Comunidad </ng-template>
+  <ng-template #subtitle> Participación Vecinal </ng-template>
+  <ng-template #content>
+    <p>Fomentamos la participación vecinal y brindamos informes sobre mejoras y proyectos.</p>
+    <div class="service-info">
+        <i class="pi pi-users"></i> Información accesible
+    </div>
+  </ng-template>
+</p-card>
+
+
+
+  </div>
+</section>
