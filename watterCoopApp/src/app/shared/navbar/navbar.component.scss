@@ -29,7 +29,10 @@
     align-items: center;
     gap: 12px;
     cursor: pointer;
-
+    .titleLogo{
+      font-size: 18px;
+      font-weight: 500;
+    }
     @media (max-width: 768px) {
       position: absolute;
       left: 50%;

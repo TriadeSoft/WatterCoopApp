@@ -1,0 +1,67 @@
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #e1edf4, #00a8e8);
+  color: white;
+
+}
+
+.hero-content {
+  max-width: 600px;
+
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+
+
+}
+
+:host ::ng-deep .p-button {
+  color: rgb(61, 94, 123);
+  background-color: #e1edf4;
+  border: none;
+  width: 160px;
+  height: 40px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+:host ::ng-deep .p-button:hover {
+  transform: scale(1.02);
+}
+
+
+
+.hero-image img {
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.7));
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image img {
+    max-width: 90%;
+    margin-top: 2rem;
+  }
+}
