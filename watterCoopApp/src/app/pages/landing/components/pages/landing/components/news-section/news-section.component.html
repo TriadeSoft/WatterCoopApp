@@ -1,1 +1,27 @@
-<p>news-section works!</p>
+<section class="tips-section  tips-container
+  ">
+  <div class="text-center mb-4">
+    <h2 class="text-3xl font-bold text-primary">Consejos para el Cuidado del Agua</h2>
+    <p class="text-lg text-gray-600">
+      Pequeñas acciones pueden hacer una gran diferencia en el consumo y conservación del agua.
+      Sigue estos consejos para ayudar a tu comunidad.
+    </p>
+  </div>
+
+  <div class="card">
+    <p-carousel [value]="tips" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" autoplayInterval="4000">
+      <ng-template let-tip #item>
+        <div class="tip-card">
+          <div class="tip-image">
+            <img [src]="'/images/tips/' + tip.image" [alt]="tip.title" class="rounded-border" />
+            <p-tag value="Consejo" severity="info" class="custom-tag" />
+          </div>
+          <div class="tip-content">
+            <h3 class="tip-title">{{ tip.title }}</h3>
+            <p class="tip-description">{{ tip.description }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</section>
