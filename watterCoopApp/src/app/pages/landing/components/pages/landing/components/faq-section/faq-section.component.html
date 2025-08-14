@@ -1,1 +1,18 @@
-<p>faq-section works!</p>
+<section class="faq-section">
+  <h2 class="text-3xl font-bold text-primary">Preguntas Frecuentes</h2>
+  <p class="text-lg text-gray-600 mb-4">
+    Encuentra respuestas a las consultas más comunes sobre nuestro servicio de agua potable.
+  </p>
+
+  <div class="faq-container">
+    <div *ngFor="let item of faqItems; let i = index" class="faq-item" [class.open]="activeIndex === i">
+      <div class="faq-question" (click)="toggleItem(i)">
+        <span>{{ item.question }}</span>
+        <i class="pi" [ngClass]="activeIndex === i ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+      </div>
+      <div class="faq-answer" [innerHTML]="item.answer">
+        {{ item.answer }}
+      </div>
+    </div>
+  </div>
+</section>

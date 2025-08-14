@@ -65,3 +65,17 @@
     margin-top: 2rem;
   }
 }
+
+
+@keyframes rotateImage {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-image img {
+  animation: rotateImage 160s linear infinite; /* Ajusta la duración y la velocidad */
+}

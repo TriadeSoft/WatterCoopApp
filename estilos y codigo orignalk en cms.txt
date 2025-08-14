@@ -1,0 +1,452 @@
+<div class="accordion-container ">
+    <div class="accordion">
+        <div>
+            <input type="checkbox" name="example_accordion" id="events-faq" class="accordion-input">
+            <label for="events-faq" class="accordion-label-main title-faq">MEGAPASS FAQ</label>
+            <div class="accordion-content">
+                <div>
+                    <input type="checkbox" name="example_accordion" id="question1" class="accordion-input">
+                    <label for="question1" class="accordion-label">Can I use my monthly ticket on premium formats like IMAX?</label>
+                    <div class="accordion-content">
+                        <p>MegaPass monthly tickets can be redeemed for any standard or luxury seats at no additional cost. While they cannot be fully redeemed for premium formats such as D-Box, IMAX, and PlatinumX, you can use your MegaPass ticket to receive a significant discount on these premium format tickets.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" name="example_accordion" id="question2" class="accordion-input">
+                    <label for="question2" class="accordion-label">How much does MegaPass cost?</label>
+                    <div class="accordion-content">
+                        <p>MegaPass Double plans are $19.99 per month and include 2 free tickets each month. MegaPass Single plans are $9.99 per month and include 1 free ticket each month.
+
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" name="example_accordion" id="question3" class="accordion-input">
+                    <label for="question3" class="accordion-label">Does the 20% discount cover all concessions?</label>
+                    <div class="accordion-content">
+                        <p>
+The MegaPass 20% discount applies to all concessions except for collectible tins and cups, as well as MegaMug and MegaTub refills.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" name="example_accordion" id="question4" class="accordion-input">
+                    <label for="question4" class="accordion-label">What happens to unused MegaPass tickets?</label>
+                    <div class="accordion-content">
+                        <p>At the end of each month, any unused MegaPass tickets will roll over and accumulate for up to 12 months.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" name="example_accordion" id="question5" class="accordion-input">
+                    <label for="question5" class="accordion-label">Can I share my tickets?</label>
+                    <div class="accordion-content">
+                        <p> Absolutely! MegaPass tickets can be shared with friends and family. Plus, after using your monthly MegaPass tickets, you can purchase additional tickets at a discounted rate of $1 off per ticket, with booking fees waived (up to 6 discounted tickets per order).
+                      
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+#standard {<br />
+        position: relative;<br />
+	color: white;<br />
+        max-width: 100%;<br />
+        background-color:#13003b ;<br />
+    margin: auto;<br />
+}<br />
+.video-responsive{<br />
+    overflow:hidden;<br />
+    padding-bottom:56.25%;<br />
+    position:relative;<br />
+    height:0;<br />
+}<br />
+.video-responsive iframe{<br />
+    left:0;<br />
+    top:0;<br />
+    height:100%;<br />
+    width:100%;<br />
+    position:absolute;<br />
+}<br />
+sup {<br />
+     font-size: 60%;<br />
+}<br />
+img.standard {<br />
+    max-width: 100%;<br />
+}<br />
+#standard main {<br />
+     max-width: 100%;<br />
+     margin-top: 1%;<br />
+     margin-left: 7%;<br />
+     margin-right: 7%;<br />
+     margin-bottom: 1%;<br />
+}</p>
+<p>#standard h1 {<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 60px;<br />
+    text-align: left;<br />
+    font-weight: 700;<br />
+    margin-left: 8px;<br />
+    margin-right: 8px;<br />
+    margin-top: none;<br />
+    margin-bottom: 8px;<br />
+}<br />
+#standard h2 {<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 32px;<br />
+    text-align: left;<br />
+    font-weight: 700;<br />
+    margin: 8px;<br />
+}<br />
+#standard h3 {<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 25px;<br />
+    text-align: left;<br />
+    font-weight: 700;<br />
+    margin: 8px;<br />
+}<br />
+#standard h4 {<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 18px;<br />
+    text-align: left;<br />
+    font-weight: 700;<br />
+    margin-top: 4px;<br />
+    margin-bottom: 3px;<br />
+    margin-right: 8px;<br />
+    margin-left: 8px;<br />
+}</p>
+<p>#standard p {<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 16px;<br />
+    font-weight: 400;<br />
+    line-height: 20px;<br />
+    text-align: left;<br />
+    margin: 8px;<br />
+}</p>
+<p>.mp-button {<br />
+    padding-top: 10px;<br />
+    padding-bottom: 10px;<br />
+    padding-left: 30px;<br />
+    padding-right: 30px;<br />
+}</p>
+<p>#standard ol{<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 16px;<br />
+    text-align: left;<br />
+    margin-left: 4%;<br />
+    margin-right: 4%;<br />
+    margin-top: 8px;<br />
+    margin-bottom: 8px;<br />
+}</p>
+<p>#standard ul{<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 16px;<br />
+    text-align: left;<br />
+    margin-left: 4%;<br />
+    margin-right: 4%;<br />
+    margin-top: 8px;<br />
+    margin-bottom: 8px;<br />
+}</p>
+<p>#standard li {<br />
+    font-family: 'Source Sans Pro', sans-serif;<br />
+    color: #ffffff;<br />
+    font-size: 16px;<br />
+    font-weight: 400;<br />
+    list-style-type: disc;<br />
+    list-style-position: outside;<br />
+    text-align: left;<br />
+    margin-left: 5px;<br />
+    margin-top: 8px;<br />
+    margin-bottom: 8px;<br />
+    padding: 6px 6px 6px 20px;<br />
+}</p>
+<p>a.standard {<br />
+     font-family: 'Source Sans Pro', sans-serif;<br />
+     color: #ffcc33;<br />
+     font-size: 16px;<br />
+     font-weight: regular;<br />
+     text-align: left;<br />
+}</p>
+<p>#standard body {<br />
+    font-weight: 400;<br />
+    font-size: 16px;<br />
+}</p>
+<p>.color-block {<br />
+     background-color: #511F62;<br />
+     padding: 18px 18px;<br />
+     margin: 8px 0 px;<br />
+     border-radius: 15px;<br />
+     display: inline-block;<br />
+}</p>
+<p>.col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,<br />
+.col-md-1, .col-md-2, .col-md-25, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,<br />
+.col-lg-1, .col-lg-2, .col-lg-25, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12,<br />
+.col-xl-1, .col-xl-2, .col-xl-25, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {<br />
+    float: left;<br />
+    position: relative;<br />
+    width: 100%;<br />
+    min-height: 1px;<br />
+    padding: 0.1%;<br />
+}</p>
+<p>/* Create three equal columns that floats next to each other */<br />
+.col-xs-12 {flex: 0 0 auto; max-width: 100%;}</p>
+<p>  /* Clear floats after the columns */<br />
+  .row:after {<br />
+    content: "";<br />
+    display: table;<br />
+    clear: both;<br />
+  }<br />
+/*Small Screen*/<br />
+@media (min-width: 555px) {<br />
+    .col-sm-1 {flex: 0 0 auto; max-width: 8.33333%;}<br />
+    .col-sm-2 {flex: 0 0 auto; max-width: 16.66667%;}<br />
+    .col-sm-3 {flex: 0 0 auto; max-width: 25%;}<br />
+    .col-sm-4 {flex: 0 0 auto; max-width: 33.33333%;}<br />
+    .col-sm-5 {flex: 0 0 auto; max-width: 41.66667%;}<br />
+    .col-sm-6 {flex: 0 0 auto; max-width: 50%;}<br />
+    .col-sm-7 {flex: 0 0 auto; max-width: 58.33333%;}<br />
+    .col-sm-8 {flex: 0 0 auto; max-width: 66.66667%;}<br />
+    .col-sm-9 {flex: 0 0 auto; max-width: 75%;}<br />
+    .col-sm-10 {flex: 0 0 auto; max-width: 83.33333%;}<br />
+    .col-sm-11 {flex: 0 0 auto; max-width: 91.66667%;}<br />
+    .col-sm-12 {flex: 0 0 auto; max-width: 100%;}</p>
+<p>}</p>
+<p>/* For tablet*/<br />
+@media (min-width: 768px) {<br />
+    .col-md-1 {flex: 0 0 auto; max-width: 8.33333%;}<br />
+    .col-md-2 {flex: 0 0 auto; max-width: 16.66667%;}<br />
+    .col-md-25 {flex: 0 0 auto; max-width: 20%;}<br />
+    .col-md-3 {flex: 0 0 auto; max-width: 25%;}<br />
+    .col-md-4 {flex: 0 0 auto; max-width: 33.33333%;}<br />
+    .col-md-5 {flex: 0 0 auto; max-width: 41.66667%;}<br />
+    .col-md-6 {flex: 0 0 auto; max-width: 50%;}<br />
+    .col-md-7 {flex: 0 0 auto; max-width: 58.33333%;}<br />
+    .col-md-8 {flex: 0 0 auto; max-width: 66.66667%;}<br />
+    .col-md-9 {flex: 0 0 auto; max-width: 75%;}<br />
+    .col-md-10 {flex: 0 0 auto; max-width: 83.33333%;}<br />
+    .col-md-11 {flex: 0 0 auto; max-width: 91.66667%;}<br />
+    .col-md-12 {flex: 0 0 auto; max-width: 100%;}<br />
+}</p>
+<p>/* For desktop: */<br />
+@media (min-width: 1024px) {<br />
+    .col-lg-1 {flex: 0 0 auto; max-width: 8.33333%;}<br />
+    .col-lg-2 {flex: 0 0 auto; max-width: 16.66667%;}<br />
+    .col-lg-25 {flex: 0 0 auto; max-width: 20%;}<br />
+    .col-lg-3 {flex: 0 0 auto; max-width: 25%;}<br />
+    .col-lg-4 {flex: 0 0 auto; max-width: 33.33333%;}<br />
+    .col-lg-5 {flex: 0 0 auto; max-width: 41.66667%;}<br />
+    .col-lg-6 {flex: 0 0 auto; max-width: 50%;}<br />
+    .col-lg-7 {flex: 0 0 auto; max-width: 58.33333%;}<br />
+    .col-lg-8 {flex: 0 0 auto; max-width: 66.66667%;}<br />
+    .col-lg-9 {flex: 0 0 auto; max-width: 75%;}<br />
+    .col-lg-10 {flex: 0 0 auto; max-width: 83.33333%;}<br />
+    .col-lg-11 {flex: 0 0 auto; max-width: 91.66667%;}<br />
+    .col-lg-12 {flex: 0 0 auto; max-width: 100%;}</p>
+<p>}</p>
+<p>@media (min-width: 1440px) {<br />
+    .col-xl-1 {flex: 0 0 auto; max-width: 8.33333%;}<br />
+    .col-xl-2 {flex: 0 0 auto; max-width: 16.66667%;}<br />
+    .col-xl-25 {flex: 0 0 auto; max-width: 20%;}<br />
+    .col-xl-3 {flex: 0 0 auto; max-width: 25%;}<br />
+    .col-xl-4 {flex: 0 0 auto; max-width: 33.33333%;}<br />
+    .col-xl-5 {flex: 0 0 auto; max-width: 41.66667%;}<br />
+    .col-xl-6 {flex: 0 0 auto; max-width: 50%;}<br />
+    .col-xl-7 {flex: 0 0 auto; max-width: 58.33333%;}<br />
+    .col-xl-8 {flex: 0 0 auto; max-width: 66.66667%;}<br />
+    .col-xl-9 {flex: 0 0 auto; max-width: 75%;}<br />
+    .col-xl-10 {flex: 0 0 auto; max-width: 83.33333%;}<br />
+    .col-xl-11 {flex: 0 0 auto; max-width: 91.66667%;}<br />
+    .col-xl-12 {flex: 0 0 auto; max-width: 100%;}<br />
+}</p>
+<p>strong.faq {<br />
+   color: #ffce07<br />
+}</p>
+</style> <style>
+.img-text-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text-section {padding-left: 5%;}
+.img-img-section  {
+    display: flex;
+    gap: 30px;
+}
+.img-section-book img { height: auto; }
+.img-section img { width: 100%; height: auto; gap: 20px;}
+.img-text-section-book { display: flex; flex-direction: row; align-items: center}
+.text-section-book { padding-left: 5% }
+@media only screen and (max-width: 999px) {
+    .img-section-book img { width: 100%; height: auto;}
+    .img-text-section-book { flex-direction: column; gap: 30px; padding-left: 0 }
+    .text-section-book { padding-left: 0 }
+}
+@media only screen and (max-width: 768px) {
+    .img-text-section {
+        flex-direction: column;
+    }
+    .img-text-section-book {
+        flex-direction: column;
+    }
+    .img-img-section {
+        flex-direction: column;
+    }
+    .text-section {
+        padding-top: 20px;
+        padding-left: 0;
+    }
+    .img-style {
+        width: 100%;
+        height: auto;
+    }
+    .cta-megapass-button {
+       font-size: clamp(1.125rem, 4vw, 2.25rem);
+    }
+}
+.megapass-button {
+    border: 1px solid #e52bab;
+    color: white;
+    background: #e52bab;
+    padding: 10px;
+    border-radius: 18px;
+    font-family: Source Sans Pro, sans-serif;
+    color: #fff;
+    font-size: clamp(1.125rem, 4vw, 2.25rem);
+    font-weight: 700;
+    cursor: pointer;
+}
+.cta-megapass-button {
+    border: 1px solid #e52bab;
+    color: white;
+    background: #e52bab;
+    padding: 10px;
+    border-radius: 18px;
+    font-family: Source Sans Pro, sans-serif;
+    color: #fff;
+    font-size: clamp(2.9375rem, 9vw, 5.875rem);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.accordion-section {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.accordion-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+.accordion {
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+.accordion-label,
+.accordion-label-main,
+.accordion-content {
+  padding: 14px 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.accordion-label,
+.accordion-label-main {
+  font-size: clamp(1.125rem, 4vw, 2.25rem);
+  display: block;
+  color: #e52bab;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.4s;
+}
+.accordion-label-main {
+  color: white;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  border-radius: 18px;
+  font-weight: bold;
+  background: #e52bab;
+  text-align: center;
+}
+.accordion-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 12px;
+  height: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+  background-size: contain;
+  transition: transform 0.4s;
+}
+.accordion-content {
+  line-height: 1.6;
+  font-size: 0.85em;
+  display: none;
+}
+.accordion-input {
+  display: none;
+}
+.accordion-input:checked ~ .accordion-content {
+  display: block;
+}
+.accordion-input:checked ~ .accordion-label::after {
+  transform: translateY(-50%) rotate(0.5turn);
+}
+</style>
+<style>
+.carousel-cards {
+	.cards {
+                display: flex;
+                justify-content: center;
+                padding: 0;
+		.overflow {
+			margin: 0 1%;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+			flex-direction: row;
+
+			.card {
+				.card-content {
+					max-width: 300px;
+
+					h2 {
+						font-size: 22px;
+						margin: 20px;
+					}
+
+					p {
+						font-size: 14px;
+						line-height: 21px;
+						margin: 20px;
+                                                text-align: left;
+                                                font-weight: normal;
+                                                padding-bottom: 25p
+					}
+				}
+			}
+		}
+	}
+}
+</style>

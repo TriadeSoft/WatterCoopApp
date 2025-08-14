@@ -1,0 +1,441 @@
+/* Estilos para la página de contacto */
+.contact-page {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  font-family: var(--font-primary);
+}
+
+.hero-section {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.hero-section .subtitle {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Mensaje de éxito */
+.success-message {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3);
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.success-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Sección de información de contacto */
+.contact-info-section {
+  margin-bottom: 3rem;
+}
+
+.info-card {
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: none;
+  overflow: hidden;
+}
+
+.info-card ::ng-deep .p-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.info-card ::ng-deep .p-card-header {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  color: var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 16px 16px 0 0;
+}
+
+.info-card ::ng-deep .p-card-body {
+  padding: 2rem;
+}
+
+.coop-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.description {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+}
+
+.contact-item strong {
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+  color: var(--text-color);
+  margin: 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons ::ng-deep .p-button {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Horarios y emergencias */
+.schedule-info {
+  margin-bottom: 2rem;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.schedule-item i {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-right: 1rem;
+}
+
+.schedule-item strong {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+.schedule-item p {
+  color: var(--text-color);
+  margin: 0;
+}
+
+.emergency-info {
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  border-radius: 12px;
+  color: white;
+}
+
+.emergency-info h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.emergency-info p {
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.emergency-contact {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.emergency-contact ::ng-deep .p-button {
+  min-width: 140px;
+}
+
+/* Formulario de contacto */
+.contact-form-section {
+  margin-bottom: 3rem;
+}
+
+.form-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.form-card ::ng-deep .p-card-header {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  color: var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 16px 16px 0 0;
+}
+
+.form-card ::ng-deep .p-card-body {
+  padding: 2rem;
+}
+
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.form-group ::ng-deep .p-inputtext,
+.form-group ::ng-deep .p-dropdown,
+.form-group ::ng-deep .p-inputtextarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.form-group ::ng-deep .p-inputtext:focus,
+.form-group ::ng-deep .p-dropdown:focus,
+.form-group ::ng-deep .p-inputtextarea:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.1);
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.form-actions ::ng-deep .p-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+}
+
+/* Preguntas frecuentes */
+.faq-section {
+  margin-bottom: 3rem;
+}
+
+.faq-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.faq-card ::ng-deep .p-card-header {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  color: var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 16px 16px 0 0;
+}
+
+.faq-card ::ng-deep .p-card-body {
+  padding: 2rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 1rem;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.faq-question h4 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.faq-question i {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1rem;
+}
+
+.faq-answer.expanded {
+  max-height: 200px;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.faq-answer p {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Información adicional */
+.additional-info {
+  margin-bottom: 3rem;
+}
+
+.info-card-small {
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: none;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.info-card-small:hover {
+  transform: translateY(-5px);
+}
+
+.info-card-small ::ng-deep .p-card-body {
+  padding: 2rem;
+}
+
+.info-item i {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.info-item h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.info-item p {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section .subtitle {
+    font-size: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .emergency-contact {
+    flex-direction: column;
+  }
+
+  .emergency-contact ::ng-deep .p-button {
+    width: 100%;
+  }
+}
+
+/* Utilidades */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -1rem;
+}
+
+.col-md-4,
+.col-md-6 {
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+.col-md-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+@media (max-width: 768px) {
+  .col-md-4,
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

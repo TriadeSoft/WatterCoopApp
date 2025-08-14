@@ -1,6 +1,10 @@
-<app-hero-section></app-hero-section>
-<app-about-section></app-about-section>
-<app-services-section></app-services-section>
-<app-news-section></app-news-section>
-<app-faq-section></app-faq-section>
-<app-contact-section></app-contact-section>
+<div class="landing-container" (click)="createRipple($event)">
+  <app-hero-section></app-hero-section>
+  <app-notice [noticeData]="noticeData"></app-notice>
+
+  <app-about-section></app-about-section>
+  <app-services-section></app-services-section>
+  <app-news-section></app-news-section>
+  <app-faq-section></app-faq-section>
+  <app-contact-section></app-contact-section>
+</div>

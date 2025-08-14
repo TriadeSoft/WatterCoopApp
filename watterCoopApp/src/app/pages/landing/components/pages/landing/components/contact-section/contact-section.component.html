@@ -3,30 +3,59 @@
   <p>Estamos aquí para ayudarte. Puedes enviarnos un mensaje por WhatsApp o llenar el formulario.</p>
 
   <div class="contact-container">
-    <form class="contact-form">
+    <!-- Mensaje de éxito -->
+    <div *ngIf="isSent" class="success-message">
+      <div class="success-icon">
+        <i class="pi pi-check-circle"></i>
+      </div>
+      <div class="success-content">
+        <h3>¡Mensaje Preparado!</h3>
+        <p>Se abrirá tu cliente de email. Completa y envía el mensaje.</p>
+      </div>
+    </div>
+
+    <!-- Formulario de contacto -->
+    <form
+      *ngIf="!isSent"
+      class="contact-form"
+      (submit)="onSubmit($event)"
+    >
+    <input type="hidden" name="title" value="Consulta desde la web">
+    <input type="hidden" name="time" [value]="getCurrentTime()">
+
       <div class="p-field">
         <label for="name">Nombre</label>
-        <input id="name" type="text" pInputText class="p-inputtext p-component" placeholder="Tu nombre" />
+        <input id="name" name="name" type="text" pInputText class="p-inputtext p-component" placeholder="Tu nombre" required />
       </div>
+
       <div class="p-field">
         <label for="email">Correo Electrónico</label>
-        <input id="email" type="email" pInputText class="p-inputtext p-component" placeholder="tu@email.com" />
+        <input id="email" name="email" type="email" pInputText class="p-inputtext p-component" placeholder="tu@email.com" required />
       </div>
+
       <div class="p-field">
         <label for="message">Mensaje</label>
-        <textarea id="message" rows="4" pInputTextarea class="p-inputtextarea p-component" placeholder="Escribe tu mensaje aquí"></textarea>
+        <textarea id="message" name="message" rows="4" pInputTextarea class="p-inputtextarea p-component text-area-padding" placeholder="Escribe tu mensaje aquí" required></textarea>
       </div>
-      <p-button label="Enviar" icon="pi pi-send" class="p-button-primary w-full"></p-button>
+
+      <!-- Botón PrimeNG -->
+      <p-button
+        type="submit"
+        label="Enviar Email"
+        icon="pi pi-envelope"
+        class=" w-full">
+      </p-button>
     </form>
 
-    <div class="contact-info">
+    <!-- Información de contacto -->
+    <div *ngIf="!isSent" class="contact-info">
       <h3>Nuestra Información</h3>
-      <p><i class="pi pi-map-marker"></i> El Escorial, San Rafael, Mendoza</p>
-      <p><i class="pi pi-phone"></i> +54 2604 123456</p>
-      <p><i class="pi pi-envelope"></i> contacto&#64;cooperativa.com</p>
+      <p><i class="pi pi-map-marker"></i> Calle 8 Esq Calle Brasil/Las Malvinas</p>
+      <p><i class="pi pi-phone"></i> +54 2604 602545</p>
+      <p><i class="pi pi-envelope"></i> unionvecinalmalvinas&#64;gmail.com</p>
 
-      <a [href]="'https://wa.me/+542604123456'" target="_blank" class="whatsapp-button">
-        <i class="pi pi-whatsapp"></i><span> Contactar por WhatsApp</span>
+      <a [href]="'https://wa.me/+542604602545'" target="_blank" class="whatsapp-button">
+        <i class="pi pi-whatsapp "></i><span class="text-button-whatsapp"> Contactar por WhatsApp</span>
       </a>
     </div>
   </div>
