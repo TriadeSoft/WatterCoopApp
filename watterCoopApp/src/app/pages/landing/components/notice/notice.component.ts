@@ -1,20 +1,19 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
+import { SupabaseService } from '../../../../services/supabase.service';
 
 export interface NoticeData {
   id: string;
   title: string;
-  message: string;
-  imageUrl?: string;
-  startDate: Date;
-  endDate: Date;
-  priority: 'low' | 'medium' | 'high' | 'critical';
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  description: string;
+  expires_at: string;
+  active: boolean;
+  priority?: 'low' | 'medium' | 'high' | 'critical';
+  created_at: string;
+  updated_at: string;
 }
 
 @Component({
@@ -30,14 +29,15 @@ export interface NoticeData {
   styleUrl: './notice.component.scss'
 })
 export class NoticeComponent implements OnInit, OnDestroy {
-  @Input() noticeData?: NoticeData;
 
   hasActiveNotices = false;
   activeNotices: NoticeData[] = [];
   private countdownInterval?: any;
 
+  constructor(private supabaseService: SupabaseService) {}
+
   ngOnInit() {
-    this.checkNoticesVisibility();
+    this.loadActiveNotices();
     if (this.hasActiveNotices) {
       this.startCountdown();
     }
@@ -49,40 +49,33 @@ export class NoticeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private checkNoticesVisibility() {
-    if (!this.noticeData) {
+  private async loadActiveNotices() {
+    try {
+      const messages = await this.supabaseService.getActiveMessages();
+      this.activeNotices = messages || [];
+      this.hasActiveNotices = this.activeNotices.length > 0;
+
+      if (this.hasActiveNotices) {
+        this.startCountdown();
+      }
+    } catch (error) {
+      console.error('Error loading notices:', error);
       this.hasActiveNotices = false;
-      this.activeNotices = [];
-      return;
-    }
-
-    const now = new Date();
-    const startDate = new Date(this.noticeData.startDate);
-    const endDate = new Date(this.noticeData.endDate);
-
-    const isActive = this.noticeData.isActive &&
-                     now >= startDate &&
-                     now <= endDate;
-
-    if (isActive) {
-      this.activeNotices = [this.noticeData];
-      this.hasActiveNotices = true;
-    } else {
-      this.hasActiveNotices = false;
-      this.activeNotices = [];
     }
   }
 
   private startCountdown() {
     this.countdownInterval = setInterval(() => {
-      this.checkNoticesVisibility();
+      this.loadActiveNotices(); // Recargar avisos cada minuto
       if (!this.hasActiveNotices) {
         clearInterval(this.countdownInterval);
       }
     }, 60000); // Actualizar cada minuto
   }
 
-  getPriorityIcon(priority: string): string {
+  getPriorityIcon(priority?: string): string {
+    if (!priority) return 'pi-exclamation-triangle';
+
     switch (priority) {
       case 'critical':
         return 'pi-exclamation-triangle';
@@ -93,11 +86,13 @@ export class NoticeComponent implements OnInit, OnDestroy {
       case 'low':
         return 'pi-check-circle';
       default:
-        return 'pi-info-circle';
+        return 'pi-exclamation-triangle';
     }
   }
 
-  getPriorityText(priority: string): string {
+  getPriorityText(priority?: string): string {
+    if (!priority) return 'IMPORTANTE';
+
     switch (priority) {
       case 'critical':
         return 'CRÍTICO';
@@ -108,7 +103,7 @@ export class NoticeComponent implements OnInit, OnDestroy {
       case 'low':
         return 'BAJO';
       default:
-        return '';
+        return 'IMPORTANTE';
     }
   }
 
@@ -123,7 +118,7 @@ export class NoticeComponent implements OnInit, OnDestroy {
 
   getTimeRemaining(notice: NoticeData): string {
     const now = new Date();
-    const endDate = new Date(notice.endDate);
+    const endDate = new Date(notice.expires_at);
     const timeDiff = endDate.getTime() - now.getTime();
 
     if (timeDiff <= 0) {
@@ -143,7 +138,7 @@ export class NoticeComponent implements OnInit, OnDestroy {
     }
   }
 
-  formatDate(date: Date): string {
+  formatDate(date: string): string {
     return new Date(date).toLocaleDateString('es-ES', {
       day: '2-digit',
       month: '2-digit',

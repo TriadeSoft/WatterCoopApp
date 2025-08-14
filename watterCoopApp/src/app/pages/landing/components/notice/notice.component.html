@@ -10,7 +10,7 @@
 
     <div class="notices-grid">
       <div class="notice-container" *ngFor="let notice of activeNotices">
-        <div class="notice-banner" [class]="'priority-' + notice.priority">
+        <div class="notice-banner" [class]="'priority-' + (notice.priority || 'medium')">
           <!-- Contenido del lado izquierdo -->
           <div class="notice-content">
             <div class="notice-header">
@@ -28,12 +28,12 @@
             </div>
 
             <h3 class="notice-title">{{ notice.title }}</h3>
-            <p class="notice-message">{{ notice.message }}</p>
+            <p class="notice-message">{{ notice.description }}</p>
 
             <div class="notice-meta">
               <div class="date-info">
                 <span class="label">Válido hasta:</span>
-                <span class="date">{{ formatDate(notice.endDate) }}</span>
+                <span class="date">{{ formatDate(notice.expires_at) }}</span>
               </div>
               <div class="time-remaining" *ngIf="getTimeRemaining(notice)">
                 <span class="label">Expira en:</span>

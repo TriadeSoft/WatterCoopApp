@@ -7,6 +7,7 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { TooltipModule } from 'primeng/tooltip';
 import emailjs from '@emailjs/browser';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-contact',
@@ -75,27 +76,32 @@ export class ContactComponent {
     return new Date().toLocaleString('es-AR');
   }
 
-  async onSubmit(e: Event) {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    this.isLoading = true;
 
-    try {
-      // Inicializar EmailJS (solo la primera vez)
-      emailjs.init('plNAlZ8Kcs1lUl2kE');
+async onSubmit(e: Event) {
+  e.preventDefault();
+  const form = e.target as HTMLFormElement;
+  this.isLoading = true;
 
-      await emailjs.sendForm(this.serviceId, this.templateId, form);
+  try {
+    // Inicializar EmailJS con clave pública
+    emailjs.init(environment.emailJsPublicKey);
 
-      this.isSent = true;
-      form.reset();
-      setTimeout(() => (this.isSent = false), 5000);
-    } catch (err) {
-      console.error('Error al enviar con EmailJS:', err);
-      // Aquí podrías mostrar un toast de error
-    } finally {
-      this.isLoading = false;
-    }
+    // Enviar usando IDs desde environment
+    await emailjs.sendForm(
+      environment.emailJsServiceId,
+      environment.emailJsTemplateId,
+      form
+    );
+
+    this.isSent = true;
+    form.reset();
+    setTimeout(() => (this.isSent = false), 5000);
+  } catch (err) {
+    console.error('Error al enviar con EmailJS:', err);
+  } finally {
+    this.isLoading = false;
   }
+}
 
   openWhatsApp() {
     const message = encodeURIComponent('Hola, necesito información sobre los servicios de agua potable.');
