@@ -8,19 +8,32 @@
   --background-color: #ffffff; /* Fondo limpio y claro */
   --accent-color: #e1edf4; /* Azul más oscuro para botones y detalles */
   --hover-color: #00a8e8; /* Azul más vibrante para interacción */
+
+  /* Fuentes */
+  --font-primary: 'Roboto', Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-heading: 'Montserrat', Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body {
-  font-family: 'Poppins', Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.6;
 }
 
-h1, h2 {
-  font-weight: 700;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
   color: var(--primary-color);
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
 }
 
 h3 {
@@ -30,12 +43,14 @@ h3 {
 }
 
 p {
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 400;
   color: var(--text-color);
 }
 
 a {
+  font-family: var(--font-primary);
   font-size: 16px;
   color: var(--secondary-color);
   text-decoration: none;

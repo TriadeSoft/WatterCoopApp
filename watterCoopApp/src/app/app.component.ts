@@ -14,7 +14,7 @@ import { LandingComponent } from "./pages/landing/landing.component";
   providers: [MessageService]
 })
 export class AppComponent {
-  title = 'watterCoopApp';
+  title = 'Union Vecinal Malvinas';
 
   constructor(private messageService: MessageService) {}
 

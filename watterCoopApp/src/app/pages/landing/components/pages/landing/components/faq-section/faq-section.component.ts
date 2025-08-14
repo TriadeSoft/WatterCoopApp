@@ -16,9 +16,8 @@ export class FaqSectionComponent {
       answer: `
         <p>Si no recibiste tu factura de agua, puedes obtenerla de las siguientes maneras:</p>
         <ul>
-          <li><strong>Descarga digital:</strong> Ingresa a nuestra plataforma web con tu número de cliente.</li>
-          <li><strong>Consulta por WhatsApp o teléfono:</strong> Escríbenos y te enviaremos una copia digital.</li>
-          <li><strong>Visita nuestra oficina:</strong> Puedes acercarte a nuestra sede y solicitar un duplicado impreso.</li>
+          <li><strong>Consulta por WhatsApp </strong> Escríbenos y te enviaremos una copia digital.</li>
+          <li><strong>Consulta por telefono:</strong> Puedes llamarnos a nuestro telefono.</li>
         </ul>
         <p><em>Es importante mantener actualizados tus datos de contacto para recibir notificaciones y evitar demoras en el pago.</em></p>
       `
@@ -29,7 +28,7 @@ export class FaqSectionComponent {
         <p>Para solicitar una nueva conexión de agua potable, sigue estos pasos:</p>
         <ol>
           <li><strong>Reúne la documentación:</strong> Necesitarás presentar tu DNI, escritura del terreno o contrato de alquiler, y un croquis de ubicación.</li>
-          <li><strong>Completa la solicitud:</strong> Acércate a nuestras oficinas o completa el formulario en línea.</li>
+          <li><strong>Contactanos :</strong> Para coordinar la instalacion.</li>
           <li><strong>Inspección técnica:</strong> Un técnico evaluará la viabilidad de la conexión en el domicilio.</li>
           <li><strong>Pago de derechos de conexión:</strong> Una vez aprobado, deberás abonar el costo de instalación.</li>
           <li><strong>Instalación del servicio:</strong> En un plazo estimado, se procederá a la conexión del agua.</li>
@@ -86,7 +85,6 @@ export class FaqSectionComponent {
           <li><strong>Teléfono:</strong> Llama a nuestra línea de atención al cliente.</li>
           <li><strong>WhatsApp:</strong> Envíanos un mensaje y te responderemos a la brevedad.</li>
           <li><strong>Correo electrónico:</strong> Escríbenos para consultas o gestiones administrativas.</li>
-          <li><strong>Visítanos en nuestra oficina:</strong> Estamos ubicados en El Escorial, San Rafael, Mendoza.</li>
           <li><strong>Redes sociales:</strong> Síguenos en nuestras plataformas para recibir información actualizada sobre el servicio.</li>
         </ul>
         <p><em>Nuestro horario de atención es de lunes a viernes de 8:00 a 16:00. ¡Estamos para ayudarte!</em></p>

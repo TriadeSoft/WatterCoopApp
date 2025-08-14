@@ -1,0 +1,67 @@
+<div class="notice-section" *ngIf="hasActiveNotices">
+  <div class="container">
+    <div class="section-header">
+      <h2>
+        <i class="pi pi-exclamation-triangle alert-icon-title"></i>
+        Avisos Importantes
+      </h2>
+      <p>Mantente informado sobre las últimas novedades y avisos de la cooperativa</p>
+    </div>
+
+    <div class="notices-grid">
+      <div class="notice-container" *ngFor="let notice of activeNotices">
+        <div class="notice-banner" [class]="'priority-' + notice.priority">
+          <!-- Contenido del lado izquierdo -->
+          <div class="notice-content">
+            <div class="notice-header">
+              <div class="priority-badge">
+                <i [class]="getPriorityIcon(notice.priority)"></i>
+                <span class="priority-text">{{ getPriorityText(notice.priority) }}</span>
+              </div>
+              <button
+                class="close-button"
+                (click)="closeNotice(notice.id)"
+                aria-label="Cerrar aviso"
+              >
+                <i class="pi pi-times"></i>
+              </button>
+            </div>
+
+            <h3 class="notice-title">{{ notice.title }}</h3>
+            <p class="notice-message">{{ notice.message }}</p>
+
+            <div class="notice-meta">
+              <div class="date-info">
+                <span class="label">Válido hasta:</span>
+                <span class="date">{{ formatDate(notice.endDate) }}</span>
+              </div>
+              <div class="time-remaining" *ngIf="getTimeRemaining(notice)">
+                <span class="label">Expira en:</span>
+                <span class="time">{{ getTimeRemaining(notice) }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Icono del lado derecho -->
+          <div class="notice-image">
+            <div class="image-container">
+              <div class="alert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </div>
+              <div class="image-overlay">
+                <i class="pi pi-exclamation-triangle"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Efecto de pulso sutil para llamar la atención -->
+          <div class="pulse-effect"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

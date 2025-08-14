@@ -2,23 +2,20 @@
   <div class="container">
     <div class="logo">
       <img src="/images/logo/logoCoop.png" alt="Logo de la Cooperativa">
-      <p class="titleLogo" *ngIf="!isMobile"><span class="titleNav">Cooperativa El Escorial</span></p>
+      <p class="titleLogo" *ngIf="!isMobile"><span class="titleNav">Unión Vecinal Las Malvinas S.R</span></p>
     </div>
 
     <ul *ngIf="!isMobile" class="nav-links">
-      <li><a routerLink="/"><i class="pi pi-home"></i> Inicio</a></li>
-      <li><a routerLink="/nosotros"><i class="pi pi-users"></i> Nosotros</a></li>
-      <li><a routerLink="/contacto"><i class="pi pi-envelope"></i> Contáctanos</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="pi pi-home" (click)="scrollToTop()"></i> Inicio</a></li>
+      <li><a routerLink="/nosotros" routerLinkActive="active"><i class="pi pi-users"></i> Nosotros</a></li>
+      <li><a routerLink="/contacto" routerLinkActive="active"><i class="pi pi-envelope"></i> Contáctanos</a></li>
     </ul>
 
-
-
-    <div class="login-btn"  >
+    <div class="login-btn">
       <p-button label="" icon="pi pi-user" routerLink="/login" severity="secondary"></p-button>
     </div>
   </div>
 </nav>
-
 
 <app-mobile-nav *ngIf="isMobile"></app-mobile-nav>
 

@@ -1,0 +1,139 @@
+<div class="login-container">
+  <!-- Hero Section Izquierda -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <!-- <div class="hero-logo">
+        <img src="assets/images/logo/logoCoop.png" alt="Logo Cooperativa" class="logo">
+      </div> -->
+
+      <h1 class="hero-title">{{ cooperativaInfo.nombre }}</h1>
+      <p class="hero-slogan">{{ cooperativaInfo.slogan }}</p>
+
+      <div class="hero-description">
+        <p>Somos una organización sin fines de lucro comprometida con el bienestar de nuestra comunidad, proporcionando agua potable de calidad y servicios esenciales para todos nuestros vecinos.</p>
+      </div>
+
+      <div class="hero-features">
+        <div class="feature-item">
+          <i class="pi pi-check-circle"></i>
+          <span>Agua potable de calidad</span>
+        </div>
+        <div class="feature-item">
+          <i class="pi pi-check-circle"></i>
+          <span>Servicio 24/7</span>
+        </div>
+        <div class="feature-item">
+          <i class="pi pi-check-circle"></i>
+          <span>Precios accesibles</span>
+        </div>
+        <div class="feature-item">
+          <i class="pi pi-check-circle"></i>
+          <span>Atención personalizada</span>
+        </div>
+      </div>
+
+      <div class="hero-contact">
+        <h3>Información de Contacto</h3>
+        <div class="contact-item">
+          <i class="pi pi-map-marker"></i>
+          <span>{{ cooperativaInfo.direccion }}</span>
+        </div>
+        <div class="contact-item">
+          <i class="pi pi-phone"></i>
+          <span>{{ cooperativaInfo.telefono }}</span>
+        </div>
+        <div class="contact-item">
+          <i class="pi pi-envelope"></i>
+          <span>{{ cooperativaInfo.email }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-background">
+      <div class="water-pattern"></div>
+    </div>
+  </div>
+
+  <!-- Formulario de Login Derecha -->
+  <div class="login-section">
+    <div class="login-card">
+      <div class="login-header">
+        <h2>Iniciar Sesión</h2>
+        <p>Accede a tu cuenta de cooperativa</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Usuario</label>
+          <div class="input-container">
+            <i class="pi pi-user input-icon"></i>
+            <input
+              id="username"
+              type="text"
+              pInputText
+              formControlName="username"
+              placeholder="Ingresa tu usuario"
+              class="form-input"
+              [class.error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+            >
+          </div>
+          <div class="error-message" *ngIf="getFieldError('username')">
+            {{ getFieldError('username') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-container">
+            <i class="pi pi-lock input-icon"></i>
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              pInputText
+              formControlName="password"
+              placeholder="Ingresa tu contraseña"
+              class="form-input"
+              [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            >
+            <button
+              type="button"
+              class="password-toggle"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+            >
+              <i [class]="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
+            </button>
+          </div>
+          <div class="error-message" *ngIf="getFieldError('password')">
+            {{ getFieldError('password') }}
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <p-checkbox
+            formControlName="rememberMe"
+            [binary]="true"
+            inputId="rememberMe"
+            label="Recordar mi sesión"
+          ></p-checkbox>
+        </div>
+
+        <button
+          type="submit"
+          pButton
+          [loading]="isLoading"
+          [disabled]="loginForm.invalid || isLoading"
+          class="login-button"
+          label="{{ isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión' }}"
+        ></button>
+      </form>
+
+      <div class="login-footer">
+        <p class="help-text">¿Necesitas ayuda? <a href="/contact">Contáctanos</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast para mensajes -->
+  <p-toast></p-toast>
+</div>
