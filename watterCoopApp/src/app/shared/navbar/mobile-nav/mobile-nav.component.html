@@ -1,13 +1,13 @@
 <nav class="bottom-nav">
-  <a routerLink="/" class="nav-item">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
     <i class="pi pi-home"></i>
     <span>Inicio</span>
   </a>
-  <a routerLink="/nosotros" class="nav-item">
+  <a routerLink="/about" routerLinkActive="active" class="nav-item">
     <i class="pi pi-users"></i>
     <span>Nosotros</span>
   </a>
-  <a routerLink="/contacto" class="nav-item">
+  <a routerLink="/contact" routerLinkActive="active" class="nav-item">
     <i class="pi pi-envelope"></i>
     <span>Contacto</span>
   </a>
