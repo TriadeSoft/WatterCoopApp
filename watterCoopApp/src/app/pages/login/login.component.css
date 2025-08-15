@@ -315,6 +315,16 @@
   font-size: 0.95rem;
 }
 
+.checkbox-help {
+  display: block;
+  color: #6c757d;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  margin-left: 25px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
 .login-button {
   width: 100%;
   padding: 16px;
@@ -504,4 +514,23 @@
     margin-bottom: 0;
     padding-bottom: 40px; /* Espacio para el footer */
   }
+}
+
+/* Estilos para el toast - asegurar que aparezca por encima */
+::ng-deep .p-toast {
+  z-index: 9999 !important;
+}
+
+::ng-deep .p-toast .p-toast-message {
+  z-index: 9999 !important;
+}
+
+/* Estilos para el botón de loading */
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-button .p-button-loading-icon {
+  margin-right: 0.5rem;
 }

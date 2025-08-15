@@ -252,22 +252,146 @@
 }
 
 .powered-by {
-  p {
-    font-family: var(--font-primary);
-    font-size: 0.85rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    margin: 0;
+  .developer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 
-    .triadesoft-link {
-      color: var(--secondary-color);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
+    .developer-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
 
-      &:hover {
-        color: var(--hover-color);
-        text-decoration: underline;
+      .developed-by {
+        font-family: var(--font-primary);
+        font-size: 0.8rem;
+        color: var(--text-color);
+        opacity: 0.7;
+        font-style: italic;
+      }
+
+      .triadesoft-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 8px 16px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(0, 168, 232, 0.1), rgba(0, 168, 232, 0.05));
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        &:hover {
+          color: var(--hover-color);
+          border-color: var(--secondary-color);
+          background: linear-gradient(135deg, rgba(0, 168, 232, 0.15), rgba(0, 168, 232, 0.1));
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(0, 168, 232, 0.3);
+
+          &::before {
+            left: 100%;
+          }
+        }
+
+        i {
+          font-size: 1.1rem;
+          color: var(--secondary-color);
+        }
+      }
+    }
+
+    .developer-social {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, var(--secondary-color), var(--hover-color));
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        i {
+          font-size: 1.1rem;
+          color: var(--text-color);
+          z-index: 2;
+          position: relative;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          transform: translateY(-3px) scale(1.1);
+          box-shadow: 0 6px 20px rgba(0, 168, 232, 0.4);
+
+          &::before {
+            opacity: 1;
+          }
+
+          i {
+            color: white;
+            transform: rotate(360deg);
+          }
+        }
+
+        &.linkedin {
+          border: 2px solid #0077b5;
+
+          &:hover {
+            border-color: #0077b5;
+          }
+        }
+
+        &.facebook {
+          border: 2px solid #1877f2;
+
+          &:hover {
+            border-color: #1877f2;
+          }
+        }
+
+        &.website {
+          border: 2px solid var(--secondary-color);
+
+          &:hover {
+            border-color: var(--secondary-color);
+          }
+        }
       }
     }
   }
@@ -297,56 +421,34 @@
     .brand-name {
       text-align: center;
     }
-
-    .brand-description {
-      text-align: center;
-    }
-
-    .footer-contact-info {
-      justify-content: center;
-
-      .contact-item {
-        justify-content: center;
-      }
-    }
   }
 
-  .footer-links,
-  .footer-services,
-  .footer-contact {
+  .footer-bottom-container {
+    flex-direction: column;
     text-align: center;
+    gap: 15px;
 
-    h4 {
-      text-align: center;
-
-      &::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      li {
-        text-align: center;
-
-        a {
-          justify-content: center;
+    .powered-by {
+      .developer-info {
+        .developer-text {
+          .triadesoft-link {
+            font-size: 0.9rem;
+            padding: 6px 12px;
+          }
         }
-      }
-    }
-  }
 
-  .footer-contact {
-    .contact-actions {
-      align-items: center;
+        .developer-social {
+          gap: 10px;
 
-      .whatsapp-btn,
-      .email-btn {
-        justify-content: center;
+          .social-link {
+            width: 32px;
+            height: 32px;
+
+            i {
+              font-size: 1rem;
+            }
+          }
+        }
       }
     }
   }
@@ -381,6 +483,43 @@
       justify-content: center;
     }
   }
+
+  .footer-bottom {
+    padding: 20px 0;
+    padding-bottom: 3rem;
+  }
+
+  .footer-bottom-container {
+    padding: 0 15px;
+
+    .powered-by {
+      .developer-info {
+        .developer-text {
+          .developed-by {
+            font-size: 0.75rem;
+          }
+
+          .triadesoft-link {
+            font-size: 0.85rem;
+            padding: 5px 10px;
+          }
+        }
+
+        .developer-social {
+          gap: 8px;
+
+          .social-link {
+            width: 30px;
+            height: 30px;
+
+            i {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -401,6 +540,32 @@
   .footer-contact {
     h4 {
       font-size: 1rem;
+    }
+  }
+
+  .footer-bottom-container {
+    .powered-by {
+      .developer-info {
+        .developer-text {
+          .triadesoft-link {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+          }
+        }
+
+        .developer-social {
+          gap: 6px;
+
+          .social-link {
+            width: 28px;
+            height: 28px;
+
+            i {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
     }
   }
 }

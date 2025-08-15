@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { CheckboxModule } from 'primeng/checkbox';
-import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { SupabaseService } from '../../services/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -20,17 +20,15 @@ import { Router } from '@angular/router';
     ButtonModule,
     InputTextModule,
     PasswordModule,
-    CardModule,
     DividerModule,
     CheckboxModule,
     ToastModule
   ],
+  providers: [MessageService],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [MessageService]
+  styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading = false;
   showPassword = false;
@@ -38,45 +36,90 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private supabaseService: SupabaseService
   ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: [false]
     });
   }
 
-  onSubmit() {
+  async ngOnInit() {
+    // Verificar si ya hay una sesión activa
+    await this.checkExistingSession();
+  }
+
+  async checkExistingSession() {
+    try {
+      const hasSession = await this.supabaseService.hasActiveSession();
+      if (hasSession) {
+        // Si ya hay sesión, redirigir al dashboard correspondiente
+        await this.redirectBasedOnRole();
+      }
+    } catch (error) {
+      console.error('Error verificando sesión:', error);
+    }
+  }
+
+  async redirectBasedOnRole() {
+    try {
+      const role = await this.supabaseService.getUserRole();
+      if (role === 'admin') {
+        this.router.navigate(['/dashboard']);
+      } else if (role === 'user') {
+        this.router.navigate(['/dashboard-user']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    } catch (error) {
+      console.error('Error obteniendo rol:', error);
+      this.router.navigate(['/dashboard']);
+    }
+  }
+
+  async onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading = true;
 
-      // Simular proceso de login
-      setTimeout(() => {
-        const { username, password } = this.loginForm.value;
+      const { email, password, rememberMe } = this.loginForm.value;
 
-        // Aquí iría tu lógica real de autenticación
-        if (username === 'admin' && password === 'admin123') {
+      try {
+        // Configurar persistencia de sesión
+        if (rememberMe) {
+          await this.supabaseService.getClient().auth.setSession({
+            access_token: '',
+            refresh_token: ''
+          });
+        }
+
+        const { data, error } = await this.supabaseService.getClient().auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
           this.messageService.add({
             severity: 'success',
             summary: '¡Bienvenido!',
             detail: 'Has iniciado sesión correctamente'
           });
 
-          // Redirigir al dashboard después de un breve delay
-          setTimeout(() => {
-            this.router.navigate(['/dashboard']);
-          }, 1500);
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error de autenticación',
-            detail: 'Usuario o contraseña incorrectos'
-          });
+          // Redirigir al dashboard correspondiente
+          await this.redirectBasedOnRole();
         }
-
+      } catch (error: any) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error de autenticación',
+          detail: error.message
+        });
+      } finally {
         this.isLoading = false;
-      }, 1500);
+      }
     } else {
       this.markFormGroupTouched();
     }
@@ -99,6 +142,9 @@ export class LoginComponent {
       if (field.errors?.['required']) {
         return 'Este campo es requerido';
       }
+      if (field.errors?.['email']) {
+        return 'Formato de correo inválido';
+      }
       if (field.errors?.['minlength']) {
         const requiredLength = field.errors['minlength'].requiredLength;
         return `Mínimo ${requiredLength} caracteres`;
@@ -107,7 +153,6 @@ export class LoginComponent {
     return '';
   }
 
-  // Información de la cooperativa para mostrar en el login
   cooperativaInfo = {
     nombre: 'Cooperativa de Agua Potable Las Malvinas',
     slogan: 'Agua potable para toda la comunidad',

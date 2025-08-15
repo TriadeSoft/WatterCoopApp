@@ -1,20 +1,17 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
+import { SupabaseService } from '../../../../services/supabase.service';
 
 export interface NoticeData {
   id: string;
   title: string;
-  message: string;
-  imageUrl?: string;
-  startDate: Date;
-  endDate: Date;
-  priority: 'low' | 'medium' | 'high' | 'critical';
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  description: string;
+  expires_at: string;
+  active: boolean;
+  status?: string;
 }
 
 @Component({
@@ -30,17 +27,16 @@ export interface NoticeData {
   styleUrl: './notice.component.scss'
 })
 export class NoticeComponent implements OnInit, OnDestroy {
-  @Input() noticeData?: NoticeData;
 
   hasActiveNotices = false;
   activeNotices: NoticeData[] = [];
+  isLoading = true;
   private countdownInterval?: any;
 
+  constructor(private supabaseService: SupabaseService) {}
+
   ngOnInit() {
-    this.checkNoticesVisibility();
-    if (this.hasActiveNotices) {
-      this.startCountdown();
-    }
+    this.loadActiveNotices();
   }
 
   ngOnDestroy() {
@@ -49,67 +45,111 @@ export class NoticeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private checkNoticesVisibility() {
-    if (!this.noticeData) {
+  private async loadActiveNotices() {
+    try {
+      this.isLoading = true;
+      const notices = await this.supabaseService.getActiveMessages(3);
+      this.activeNotices = notices;
+      this.hasActiveNotices = this.activeNotices.length > 0;
+
+      if (this.hasActiveNotices) {
+        this.startCountdown();
+      }
+    } catch (error) {
+      console.error('Error loading notices:', error);
       this.hasActiveNotices = false;
-      this.activeNotices = [];
-      return;
-    }
-
-    const now = new Date();
-    const startDate = new Date(this.noticeData.startDate);
-    const endDate = new Date(this.noticeData.endDate);
-
-    const isActive = this.noticeData.isActive &&
-                     now >= startDate &&
-                     now <= endDate;
-
-    if (isActive) {
-      this.activeNotices = [this.noticeData];
-      this.hasActiveNotices = true;
-    } else {
-      this.hasActiveNotices = false;
-      this.activeNotices = [];
+    } finally {
+      this.isLoading = false;
     }
   }
 
   private startCountdown() {
     this.countdownInterval = setInterval(() => {
-      this.checkNoticesVisibility();
+      this.loadActiveNotices(); // Recargar avisos cada minuto
       if (!this.hasActiveNotices) {
         clearInterval(this.countdownInterval);
       }
     }, 60000); // Actualizar cada minuto
   }
 
-  getPriorityIcon(priority: string): string {
-    switch (priority) {
-      case 'critical':
-        return 'pi-exclamation-triangle';
-      case 'high':
-        return 'pi-exclamation-circle';
-      case 'medium':
-        return 'pi-info-circle';
-      case 'low':
-        return 'pi-check-circle';
+  getPriorityIcon(status?: string): string {
+    const icon = (() => {
+      switch (status?.toUpperCase()) {
+        case 'CRITICO':
+          return 'pi-exclamation-triangle';
+        case 'ALTO':
+          return 'pi-exclamation-circle';
+        case 'MEDIO':
+          return 'pi-info-circle';
+        case 'BAJO':
+          return 'pi-check-circle';
+        default:
+          return 'pi-exclamation-triangle';
+      }
+    })();
+
+    return icon;
+  }
+
+  getPriorityText(status?: string): string {
+    switch (status?.toUpperCase()) {
+      case 'CRITICO':
+        return 'CRÍTICO';
+      case 'ALTO':
+        return 'ALTO';
+      case 'MEDIO':
+        return 'MEDIO';
+      case 'BAJO':
+        return 'BAJO';
       default:
-        return 'pi-info-circle';
+        return 'IMPORTANTE';
     }
   }
 
-  getPriorityText(priority: string): string {
-    switch (priority) {
-      case 'critical':
-        return 'CRÍTICO';
-      case 'high':
-        return 'ALTO';
-      case 'medium':
-        return 'MEDIO';
-      case 'low':
-        return 'BAJO';
+  getPriorityColor(status?: string): string {
+    switch (status?.toUpperCase()) {
+      case 'CRITICO':
+        return '#dc3545';
+      case 'ALTO':
+        return '#fd7e14';
+      case 'MEDIO':
+        return '#00a8e8';
+      case 'BAJO':
+        return '#28a745';
       default:
-        return '';
+        return '#00a8e8';
     }
+  }
+
+  getPriorityBgColor(status?: string): string {
+    switch (status?.toUpperCase()) {
+      case 'CRITICO':
+        return 'rgba(220, 53, 69, 0.1)';
+      case 'ALTO':
+        return 'rgba(253, 126, 20, 0.1)';
+      case 'MEDIO':
+        return 'rgba(0, 168, 232, 0.1)';
+      case 'BAJO':
+        return 'rgba(40, 167, 69, 0.1)';
+      default:
+        return 'rgba(0, 168, 232, 0.1)';
+    }
+  }
+
+  getPriorityBorderColor(status?: string): string {
+    switch (status?.toUpperCase()) {
+      case 'CRITICO':
+        return 'rgba(220, 53, 69, 0.3)';
+      case 'ALTO':
+        return 'rgba(253, 126, 20, 0.3)';
+      case 'MEDIO':
+        return 'rgba(0, 168, 232, 0.3)';
+      case 'BAJO':
+        return 'rgba(40, 167, 69, 0.3)';
+      default:
+        return 'rgba(0, 168, 232, 0.3)';
+    }
+
   }
 
   closeNotice(noticeId: string) {
@@ -120,11 +160,17 @@ export class NoticeComponent implements OnInit, OnDestroy {
       clearInterval(this.countdownInterval);
     }
   }
-
   getTimeRemaining(notice: NoticeData): string {
-    const now = new Date();
-    const endDate = new Date(notice.endDate);
-    const timeDiff = endDate.getTime() - now.getTime();
+    // Fecha local Argentina
+    const endDateLocal = new Date(
+      new Date(notice.expires_at).toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires' })
+    );
+
+    const nowLocal = new Date(
+      new Date().toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires' })
+    );
+
+    const timeDiff = endDateLocal.getTime() - nowLocal.getTime();
 
     if (timeDiff <= 0) {
       return '';
@@ -143,11 +189,13 @@ export class NoticeComponent implements OnInit, OnDestroy {
     }
   }
 
-  formatDate(date: Date): string {
-    return new Date(date).toLocaleDateString('es-ES', {
+  formatDate(date: string): string {
+    return new Date(date).toLocaleDateString('es-AR', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric'
     });
   }
+
+
 }
