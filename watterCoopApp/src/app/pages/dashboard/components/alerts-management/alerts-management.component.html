@@ -1,0 +1,202 @@
+<div class="alerts-management">
+  <!-- Header de la sección -->
+  <div class="section-header">
+    <h2>Gestión de Alertas</h2>
+    <p>Administra las alertas que se muestran a los usuarios</p>
+  </div>
+
+  <!-- Indicador de Carga -->
+  <div *ngIf="isLoading" class="loading-section">
+    <div class="loading-spinner">
+      <i class="pi pi-spin pi-spinner"></i>
+      <p>Cargando...</p>
+    </div>
+  </div>
+
+  <!-- Alerta Actual -->
+  <div *ngIf="currentAlert && !showForm && !isLoading" class="current-alert-section">
+    <p-card class="current-alert-card">
+      <ng-template pTemplate="header">
+        <div class="alert-header">
+          <div class="alert-status">
+            <span class="status-badge" [style.background-color]="getStatusColor(currentAlert.status)">
+              {{ getStatusLabel(currentAlert.status) }}
+            </span>
+          </div>
+          <div class="alert-actions">
+            <button
+              pButton
+              icon="pi pi-pencil"
+              class="p-button-text edit-button"
+              (click)="showEditForm()"
+              pTooltip="Editar Alerta">
+            </button>
+            <button
+              pButton
+              icon="pi pi-trash"
+              class="p-button-text delete-button"
+              (click)="deleteAlert()"
+              pTooltip="Eliminar Alerta">
+            </button>
+          </div>
+        </div>
+      </ng-template>
+
+      <div class="alert-content">
+        <h3 class="alert-title">{{ currentAlert.title }}</h3>
+        <p class="alert-description">{{ currentAlert.description }}</p>
+
+        <div class="alert-meta">
+          <div class="meta-item">
+            <i class="pi pi-calendar"></i>
+            <span>Expira: {{ currentAlert.expires_at | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="meta-item">
+            <i class="pi pi-clock"></i>
+            <span>Creada: {{ currentAlert.created_at | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="meta-item">
+            <i class="pi pi-check-circle" [class.active]="currentAlert.active"></i>
+            <span>{{ currentAlert.active ? 'Activa' : 'Inactiva' }}</span>
+          </div>
+        </div>
+      </div>
+    </p-card>
+
+    <div class="create-new-section">
+      <p>¿Necesitas crear una nueva alerta?</p>
+      <button
+        pButton
+        icon="pi pi-plus"
+        label="Crear Nueva Alerta"
+        class="create-button"
+        (click)="showCreateForm()">
+      </button>
+    </div>
+  </div>
+
+  <!-- Sin Alerta Actual -->
+  <div *ngIf="!currentAlert && !showForm && !isLoading" class="no-alert-section">
+    <div class="empty-state">
+      <i class="pi pi-exclamation-triangle"></i>
+      <h3>No hay alertas activas</h3>
+      <p>Los usuarios no verán ninguna alerta en este momento</p>
+      <button
+        pButton
+        icon="pi pi-plus"
+        label="Crear Primera Alerta"
+        class="create-button"
+        (click)="showCreateForm()">
+      </button>
+    </div>
+  </div>
+
+  <!-- Formulario de Alerta -->
+  <div *ngIf="showForm" class="form-section">
+    <p-card class="form-card">
+      <ng-template pTemplate="header">
+        <div class="card-header">
+          <h3>{{ isEditing ? 'Editar Alerta' : 'Crear Nueva Alerta' }}</h3>
+        </div>
+      </ng-template>
+
+      <form [formGroup]="alertForm" (ngSubmit)="onSubmit()" class="alert-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="title">Título de la Alerta *</label>
+            <input
+              id="title"
+              type="text"
+              pInputText
+              formControlName="title"
+              placeholder="Ej: Mantenimiento de la Red"
+              class="form-input"
+              [class.error]="alertForm.get('title')?.invalid && alertForm.get('title')?.touched">
+            <div class="error-message" *ngIf="alertForm.get('title')?.invalid && alertForm.get('title')?.touched">
+              <span *ngIf="alertForm.get('title')?.errors?.['required']">El título es requerido</span>
+              <span *ngIf="alertForm.get('title')?.errors?.['minlength']">Mínimo 5 caracteres</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="status">Prioridad *</label>
+            <p-dropdown
+              id="status"
+              [options]="statusOptions"
+              formControlName="status"
+              placeholder="Selecciona la prioridad"
+              class="form-dropdown">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción *</label>
+          <textarea
+            id="description"
+            pInputTextarea
+            formControlName="description"
+            placeholder="Describe detalladamente la alerta..."
+            rows="4"
+            class="form-textarea"
+            [class.error]="alertForm.get('description')?.invalid && alertForm.get('description')?.touched">
+          </textarea>
+          <div class="error-message" *ngIf="alertForm.get('description')?.invalid && alertForm.get('description')?.touched">
+            <span *ngIf="alertForm.get('description')?.errors?.['required']">La descripción es requerida</span>
+            <span *ngIf="alertForm.get('description')?.errors?.['minlength']">Mínimo 10 caracteres</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expires_at">Fecha de Expiración *</label>
+            <p-calendar
+              id="expires_at"
+              formControlName="expires_at"
+              [showIcon]="true"
+              dateFormat="dd/mm/yy"
+              placeholder="Selecciona fecha"
+              class="form-calendar">
+            </p-calendar>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                formControlName="active"
+                class="form-checkbox">
+              <span>Alerta Activa</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button
+            type="submit"
+            pButton
+            [loading]="isLoading"
+            [disabled]="alertForm.invalid || isLoading"
+            class="submit-button"
+            [label]="isLoading ? 'Procesando...' : (isEditing ? 'Actualizar Alerta' : 'Crear Alerta')">
+          </button>
+
+          <button
+            type="button"
+            pButton
+            class="p-button-secondary cancel-button"
+            [disabled]="isLoading"
+            (click)="hideForm()"
+            label="Cancelar">
+          </button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+
+  <!-- Toast para mensajes -->
+  <p-toast></p-toast>
+
+  <!-- Diálogo de confirmación -->
+  <p-confirmDialog></p-confirmDialog>
+</div>

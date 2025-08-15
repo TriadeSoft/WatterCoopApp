@@ -64,21 +64,21 @@
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
         <div class="form-group">
-          <label for="username" class="form-label">Usuario</label>
+          <label for="email" class="form-label">Correo Electrónico</label>
           <div class="input-container">
-            <i class="pi pi-user input-icon"></i>
+            <i class="pi pi-envelope input-icon"></i>
             <input
-              id="username"
-              type="text"
+              id="email"
+              type="email"
               pInputText
-              formControlName="username"
-              placeholder="Ingresa tu usuario"
+              formControlName="email"
+              placeholder="Ingresa tu correo electrónico"
               class="form-input"
-              [class.error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+              [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
             >
           </div>
-          <div class="error-message" *ngIf="getFieldError('username')">
-            {{ getFieldError('username') }}
+          <div class="error-message" *ngIf="getFieldError('email')">
+            {{ getFieldError('email') }}
           </div>
         </div>
 
@@ -114,8 +114,9 @@
             formControlName="rememberMe"
             [binary]="true"
             inputId="rememberMe"
-            label="Recordar mi sesión"
+            label="Recordar mi sesión en este navegador"
           ></p-checkbox>
+          <small class="checkbox-help">Tu sesión se mantendrá activa hasta que cierres el navegador</small>
         </div>
 
         <button
@@ -124,8 +125,10 @@
           [loading]="isLoading"
           [disabled]="loginForm.invalid || isLoading"
           class="login-button"
-          label="{{ isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión' }}"
-        ></button>
+          [label]="isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'">
+        </button>
+
+
       </form>
 
       <div class="login-footer">

@@ -1,3 +1,4 @@
+// environment.ts (desarrollo)
 export const environment = {
   production: true,
   emailJsPublicKey: process.env['NG_APP_EMAILJS_PUBLIC_KEY'] || '',
